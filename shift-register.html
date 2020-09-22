@@ -1,0 +1,65 @@
+<script type="text/javascript">
+
+	RED.nodes.registerType( 'shift-register', {
+		category: 'function',
+		defaults: {
+			name: { value: '' },
+			topic: { value: '' },
+			output: { value: '1' }
+		},
+		inputs: 1,
+		outputs: 8,
+		color: '#18ba4b',
+		icon: 'serial.png',
+		paletteLabel: 'shift register',
+		label: function() {
+			return this.name || 'shift register';
+		}
+	} );
+
+</script>
+
+<script type="text/html" data-template-name="shift-register">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-fw fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name" />
+	</div>
+	<div class="form-row">
+		<label for="node-input-topic"><i class="fa fa-fw fa-tasks"></i> Topic</label>
+		<input type="text" id="node-input-topic" placeholder="Topic" />
+	</div>
+	<br />
+	<div class="form-row">
+		<label for="node-input-output"><i class="fa fa-fw fa-envelope"></i> Output</label>
+		<select id="node-input-output">
+			<option value="1">true / false</option>
+			<option value="2">1 / 0</option>
+		</select>
+	</div>
+</script>
+
+<script type="text/html" data-help-name="shift-register">
+	<p>
+		A controllable clock generator that runs through the individual clock cycles with the set period duration.
+	</p>
+	<p>
+		The clock generator starts when receiving <code>1</code> or <code>true</code> as value of <code>msg.payload</code>.
+		<code>0</code> or <code>false</code> as value of <code>msg.payload</code> stops the cyclic clock output again.
+	</p>
+	<p>
+		The values for <b>Name</b> and <b>Topic</b> can be set in the properties. These are also part of an outgoing message
+		(<code>msg.name</code> and <code>msg.topic</code>).
+	</p>
+	<p>
+		Setting the <b>Period</b> value defines the length of a clock cycle. Whole seconds can be specified here.
+	</p>
+	<p>
+		The <b>Output</b> parameter specifies the data type of <code>msg.payload</code> in an outgoing message.
+		You can choose between <code>0</code> / <code>false</code> and <code>1</code> / <code>true</code>. A second output
+		delivers an inverted signal.
+	</p>
+	<p>
+		The outgoing message also contains <code>msg.timestamp</code>, which specifies the time of the status change in
+		milliseconds since 1.1.1970.
+	</p>
+</script>
