@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- outputs-property to display the preview with an output
+- outputs-property set to display the node with an output in the preview
 - Explaination of msg.reset
 - Sending init-messages after deploy
 
