@@ -4,6 +4,8 @@
 
 ### Added
 - outputs-property to display the preview with an output
+- Explaination of msg.reset
+- Sending init-messages after deploy
 
 ## [v1.0.0] - 2020-09-22
 

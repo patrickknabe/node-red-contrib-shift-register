@@ -2,7 +2,7 @@ module.exports = RED => {
 	RED.nodes.registerType( 'shift register', function( config ) {
 		RED.nodes.createNode( this, config );
 
-		let value = 0;
+		let value;
 
 		const updateStatus = flash => {
 			let text = '';
@@ -19,7 +19,13 @@ module.exports = RED => {
 			}
 		};
 
-		updateStatus( false );
+		if( config.init ) {
+			value = Math.pow( 2, config.outputs ) - 1;
+			this.emit( 'input', { reset: true } );
+		} else {
+			value = 0;
+			updateStatus( false );
+		}
 
 		this.on( 'input', msg => {
 			const msgs = [];
