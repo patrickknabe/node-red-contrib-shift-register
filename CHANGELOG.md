@@ -1,5 +1,10 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- outputs-property to display the preview with an output
+
 ## [v1.0.0] - 2020-09-22
 
 ### Added
