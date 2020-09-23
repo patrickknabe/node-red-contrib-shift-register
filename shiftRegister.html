@@ -43,26 +43,26 @@
 
 <script type="text/html" data-help-name="shift register">
 	<p>
-		A controllable clock generator that runs through the individual clock cycles with the set period duration.
+		A shift register where each incoming message is processed as a clock signal if <code>msg.payload</code>
+		has the value <code>false</code> / <code>0</code> or <code>true</code> / <code>1</code>.
 	</p>
 	<p>
-		The clock generator starts when receiving <code>1</code> or <code>true</code> as value of <code>msg.payload</code>.
-		<code>0</code> or <code>false</code> as value of <code>msg.payload</code> stops the cyclic clock output again.
+		Initially the register has the value 0. When a valid input is received, the register value is
+		shifted up one bit and the least significant bit is set to the value of <code>msg.payload</code>.
+		If the value of a bit changes, this change is reported via the corresponding output in the set
+		format.
 	</p>
 	<p>
-		The values for <b>Name</b> and <b>Topic</b> can be set in the properties. These are also part of an outgoing message
-		(<code>msg.name</code> and <code>msg.topic</code>).
+		The values for <b>Name</b> and <b>Topic</b> can be set in the properties. These are part of
+		each outgoing message (<code>msg.name</code> and <code>msg.topic</code>).
 	</p>
 	<p>
-		Setting the <b>Period</b> value defines the length of a clock cycle. Whole seconds can be specified here.
+		The number of outputs can be defined by the parameter <b>Outputs</b>. A maximum of 16 outputs
+		is possible here.
 	</p>
 	<p>
-		The <b>Output</b> parameter specifies the data type of <code>msg.payload</code> in an outgoing message.
-		You can choose between <code>0</code> / <code>false</code> and <code>1</code> / <code>true</code>. A second output
-		delivers an inverted signal.
-	</p>
-	<p>
-		The outgoing message also contains <code>msg.timestamp</code>, which specifies the time of the status change in
-		milliseconds since 1.1.1970.
+		The <b>Output</b> parameter specifies the data type of <code>msg.payload</code> in an outgoing
+		message. You can choose between <code>false</code> / <code>0</code> and <code>true</code> /
+		<code>1</code>.
 	</p>
 </script>
