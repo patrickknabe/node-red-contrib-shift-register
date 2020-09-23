@@ -6,7 +6,8 @@
 			name: { value: '' },
 			topic: { value: '' },
 			outputs: { value: 8 },
-			output: { value: '1' }
+			output: { value: '1' },
+			init: { value: false }
 		},
 		inputs: 1,
 		outputs: 1,
@@ -40,6 +41,11 @@
 			<option value="2">1 / 0</option>
 		</select>
 	</div>
+	<br />
+	<div class="form-row">
+		<label for="node-input-init"><i class="fa fa-fw fa-rocket"></i> Initialization</label>
+		<input type="checkbox" id="node-input-init" style="width: auto;" />
+	</div>
 </script>
 
 <script type="text/html" data-help-name="shift register">
@@ -51,7 +57,7 @@
 		Initially the register has the value 0. When a valid input is received, the register value is
 		shifted up one bit and the least significant bit is set to the value of <code>msg.payload</code>.
 		If the value of a bit changes, this change is reported via the corresponding output in the set
-		format.
+		format. If <code>msg.reset</code> is set, the register value is set to 0.
 	</p>
 	<p>
 		The values for <b>Name</b> and <b>Topic</b> can be set in the properties. These are part of
@@ -65,5 +71,9 @@
 		The <b>Output</b> parameter specifies the data type of <code>msg.payload</code> in an outgoing
 		message. You can choose between <code>false</code> / <code>0</code> and <code>true</code> /
 		<code>1</code>.
+	</p>
+	<p>
+		If <b>Initialization</b> is set, a message with the payload <code>false</code> or <code>0</code>
+		is sent for each output.
 	</p>
 </script>
