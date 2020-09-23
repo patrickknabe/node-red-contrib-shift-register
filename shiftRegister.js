@@ -35,8 +35,7 @@ module.exports = RED => {
 				msgs.push( ( ( tmpValue >> idx ) & 1 ) !== ( ( value >> idx ) & 1 ) ? {
 					name: config.name,
 					topic: config.topic,
-					payload: config.output == 1 ? ( ( tmpValue >> idx ) & 1 ) === 1 : ( tmpValue >> idx ) & 1,
-					idx
+					payload: config.output == 1 ? ( ( tmpValue >> idx ) & 1 ) === 1 : ( tmpValue >> idx ) & 1
 				} : null );
 			}
 
