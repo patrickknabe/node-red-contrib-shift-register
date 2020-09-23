@@ -1,17 +1,16 @@
 <script type="text/javascript">
 
-	RED.nodes.registerType( 'shift-register', {
+	RED.nodes.registerType( 'shift register', {
 		category: 'function',
 		defaults: {
 			name: { value: '' },
 			topic: { value: '' },
+			outputs: { value: 8 },
 			output: { value: '1' }
 		},
 		inputs: 1,
-		outputs: 8,
 		color: '#18ba4b',
-		icon: 'serial.png',
-		paletteLabel: 'shift register',
+		icon: 'arrow-in.svg',
 		label: function() {
 			return this.name || 'shift register';
 		}
@@ -19,7 +18,7 @@
 
 </script>
 
-<script type="text/html" data-template-name="shift-register">
+<script type="text/html" data-template-name="shift register">
 	<div class="form-row">
 		<label for="node-input-name"><i class="fa fa-fw fa-tag"></i> Name</label>
 		<input type="text" id="node-input-name" placeholder="Name" />
@@ -30,15 +29,19 @@
 	</div>
 	<br />
 	<div class="form-row">
+		<label for="node-input-outputs"><i class="fa fa-fw fa-bars"></i> Outputs</label>
+		<input type="number" id="node-input-outputs" min="2" max="16" style="width: 35%;" />
+	</div>
+	<div class="form-row">
 		<label for="node-input-output"><i class="fa fa-fw fa-envelope"></i> Output</label>
-		<select id="node-input-output">
+		<select id="node-input-output" style="width: 35%;">
 			<option value="1">true / false</option>
 			<option value="2">1 / 0</option>
 		</select>
 	</div>
 </script>
 
-<script type="text/html" data-help-name="shift-register">
+<script type="text/html" data-help-name="shift register">
 	<p>
 		A controllable clock generator that runs through the individual clock cycles with the set period duration.
 	</p>

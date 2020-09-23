@@ -20,7 +20,7 @@
 	"homepage": "https://github.com/patrickknabe/node-red-contrib-shift-register#readme",
 	"node-red": {
 		"nodes": {
-			"shift-register": "shift-register.js"
+			"shift register": "shiftRegister.js"
 		}
 	}
 }
