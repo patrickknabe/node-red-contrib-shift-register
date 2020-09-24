@@ -6,6 +6,7 @@ Features:
 
 - Number of outputs adjustable
 - Format of outgoing messages configurable
+- Initial output messages (optional)
 
 ## Installation
 
