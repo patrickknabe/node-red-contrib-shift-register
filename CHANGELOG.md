@@ -3,9 +3,10 @@
 ## [Unreleased]
 
 ### Added
-- outputs-property set to display the node with an output in the preview
-- Explaination of msg.reset
-- Sending init-messages after deploy
+- outputs-property in HTML-file to display the node with an output in the preview
+- Explanation of msg.reset
+- Option for sending init-messages after deploy
+- Index and timestamp as part of outgoing messages
 
 ## [v1.0.0] - 2020-09-22
 

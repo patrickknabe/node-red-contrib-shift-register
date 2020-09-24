@@ -2,13 +2,13 @@ module.exports = RED => {
 	RED.nodes.registerType( 'shift register', function( config ) {
 		RED.nodes.createNode( this, config );
 
-		let value;
+		let val;
 
 		const updateStatus = flash => {
 			let text = '';
 
 			for( let idx = 0; idx < config.outputs; idx++ ) {
-				text = `${ ( value >> idx ) & 1 }${ text }`
+				text = `${ ( val >> idx ) & 1 }${ text }`
 			}
 
 			if( flash ) {
@@ -19,35 +19,33 @@ module.exports = RED => {
 			}
 		};
 
-		if( config.init ) {
-			value = Math.pow( 2, config.outputs ) - 1;
-			this.emit( 'input', { reset: true } );
-		} else {
-			value = 0;
-			updateStatus( false );
-		}
+		val = !config.init ? 0 : Math.pow( 2, config.outputs ) - 1;
+		!config.init ? updateStatus( false ) : this.emit( 'input', { reset: true } );
 
 		this.on( 'input', msg => {
 			const msgs = [];
-			let tmpValue = msg.reset ? 0 : value;
+			let tmpVal = msg.reset ? 0 : val;
+			const tsp = new Date().getTime();
 
 			if( msg.payload === false || msg.payload === 0 ) {
-				tmpValue <<= 1;
+				tmpVal <<= 1;
 			} else if( msg.payload === true || msg.payload === 1 ) {
-				tmpValue = ( tmpValue << 1 ) | 1;
+				tmpVal = ( tmpVal << 1 ) | 1;
 			}
 
 			for( let idx = 0; idx < config.outputs; idx++ ) {
-				msgs.push( ( ( tmpValue >> idx ) & 1 ) !== ( ( value >> idx ) & 1 ) ? {
+				msgs.push( ( ( tmpVal >> idx ) & 1 ) !== ( ( val >> idx ) & 1 ) ? {
 					name: config.name,
 					topic: config.topic,
-					payload: config.output == 1 ? ( ( tmpValue >> idx ) & 1 ) === 1 : ( tmpValue >> idx ) & 1
+					payload: config.output == 1 ? ( ( tmpVal >> idx ) & 1 ) === 1 : ( tmpVal >> idx ) & 1,
+					index: idx,
+					timestamp: tsp
 				} : null );
 			}
 
-			value = tmpValue & ( Math.pow( 2, config.outputs ) - 1 );
+			val = tmpVal & ( Math.pow( 2, config.outputs ) - 1 );
 
-			updateStatus( true );
+			updateStatus( msg._msgid !== undefined );
 			this.send( msgs );
 		} );
 	} );
