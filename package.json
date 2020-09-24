@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-shift-register",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A shift register for Node-RED",
 	"repository": {
 		"type": "git",

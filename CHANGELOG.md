@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [v1.1.0] - 2020-09-24
 
 ### Added
 - outputs-property in HTML-file to display the node with an output in the preview
@@ -14,5 +14,5 @@
 - Functional shift register for Node-RED
 - Readme, Changelog and License
 
-[Unreleased]: https://github.com/patrickknabe/node-red-contrib-shift-register/compare/v1.0.0...HEAD
+[v1.1.0]: https://github.com/patrickknabe/node-red-contrib-shift-register/compare/v1.0.0...v1.1.0
 [v1.0.0]: https://github.com/patrickknabe/node-red-contrib-shift-register/releases/tag/v1.0.0
